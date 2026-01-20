@@ -1,3 +1,44 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: demo-app
+#   labels:
+#     app: demo-app
+# spec:
+#   replicas: 2
+#   selector:
+#     matchLabels:
+#       app: demo-app
+#   template:
+#     metadata:
+#       labels:
+#         app: demo-app
+#     spec:
+#       containers:
+#         - name: demo-app
+#           image: 775412354718.dkr.ecr.ap-south-1.amazonaws.com/demo-app:1
+#           imagePullPolicy: Always
+#           ports:
+#             - containerPort: 3000
+#           resources:
+#             requests:
+#               cpu: "100m"
+#               memory: "128Mi"
+#             limits:
+#               cpu: "500m"
+#               memory: "256Mi"
+#           livenessProbe:
+#             httpGet:
+#               path: /
+#               port: 3000
+#             initialDelaySeconds: 15
+#             periodSeconds: 10
+#           readinessProbe:
+#             httpGet:
+#               path: /
+#               port: 3000
+#             initialDelaySeconds: 10
+#             periodSeconds: 5
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,9 +55,11 @@ spec:
       labels:
         app: demo-app
     spec:
+      imagePullSecrets:
+        - name: ecr-secret
       containers:
         - name: demo-app
-          image: 775412354718.dkr.ecr.ap-south-1.amazonaws.com/demo-app:1
+          image: 775412354718.dkr.ecr.ap-south-1.amazonaws.com/demo-app:11
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
