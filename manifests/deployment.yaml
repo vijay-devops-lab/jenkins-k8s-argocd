@@ -16,7 +16,7 @@
 #     spec:
 #       containers:
 #         - name: demo-app
-#           image: 775412354718.dkr.ecr.ap-south-1.amazonaws.com/demo-app:1
+#           image: 775412354718.dkr.ecr.ap-south-1.amazonaws.com/demo-app:12
 #           imagePullPolicy: Always
 #           ports:
 #             - containerPort: 3000
@@ -59,7 +59,7 @@ spec:
         - name: ecr-secret
       containers:
         - name: demo-app
-          image: 775412354718.dkr.ecr.ap-south-1.amazonaws.com/demo-app:11
+          image: 775412354718.dkr.ecr.ap-south-1.amazonaws.com/demo-app:12
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
